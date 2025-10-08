@@ -1,53 +1,41 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <string.h>
+#include <math.h>
 #include<locale.h>
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    char name1[20], name2[20];
-    int day1, month1, year1;
-    int day2, month2, year2;
+    double x, y, z, a;
+    double numerator, denominator;
 
-    printf("Введите имя и дату рождения (формат: Имя дд мм гггг): ");
-    scanf("%19s %d %d %d", name1, &day1, &month1, &year1);
+    x = 3.981e-2;   
+    y = -1.625e3; 
+    z = 0.512;
 
-    while (getchar() != '\n');
+    numerator = pow(2, -x) * sqrt(x + 4 * sqrt(y));
 
-    printf("Введите имя и дату рождения (формат: Имя дд мм гггг): ");
-    scanf("%19s %d %d %d", name2, &day2, &month2, &year2);
+    denominator = cbrt(exp(x - 1 / sin(z)));
 
-    printf("\nРезультат: ");
+    a = numerator / denominator;
 
-    if (year1 < year2) {
-        printf("%s\n", name1);
-    }
-    else if (year2 < year1) {
-        printf("%s\n", name2);
-    }
-    else {
-        if (month1 < month2) {
-            printf("%s\n", name1);
-        }
-        else if (month2 < month1) {
-            printf("%s\n", name2);
-        }
-        else {
-            if (day1 < day2) {
-                printf("%s\n", name1);
-            }
-            else if (day2 < day1) {
-                printf("%s\n", name2);
-            }
-            else {
-                printf("Одного возраста\n");
-            }
-        }
-    }
-
-    printf("Нажмите Enter для выхода...");
-    getchar();
-    getchar();
+    printf("РСЃС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ:\n");
+    printf("x = %.6f\n", x);
+    printf("y = %.6f\n", y);
+    printf("z = %.6f\n", z);
+    printf("\nРџСЂРѕРјРµР¶СѓС‚РѕС‡РЅС‹Рµ РІС‹С‡РёСЃР»РµРЅРёСЏ:\n");
+    printf("2^{-x} = 2^(%.6f) = %.6f\n", -x, pow(2, -x));
+    printf("sqrt(y) = sqrt(%.6f) = %.6f\n", y, sqrt(y));
+    printf("4sqrt(y) = %.6f\n", 4 * sqrt(y));
+    printf("x + 4sqrt(y) = %.6f\n", x + 4 * sqrt(y));
+    printf("sqrt(x + 4sqrt(y)) = %.6f\n", sqrt(x + 4 * sqrt(y)));
+    printf("Р§РёСЃР»РёС‚РµР»СЊ = %.6f\n", numerator);
+    printf("\n1/sin z = 1/sin(%.6f) = %.6f\n", z, 1 / sin(z));
+    printf("x - 1/sin z = %.6f\n", x - 1 / sin(z));
+    printf("e^{x - 1/sin z} = %.6f\n", exp(x - 1 / sin(z)));
+    printf("(cbrt e^{x - 1/sin z}) = %.6f\n", denominator);
+    printf("\nР РµР·СѓР»СЊС‚Р°С‚ РІС‹С‡РёСЃР»РµРЅРёСЏ:\n");
+    printf("a = %.6f\n", a);
+    printf("РћР¶РёРґР°РµРјС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚: 1.26185\n");
+    printf("Р Р°Р·РЅРёС†Р°: %.6f\n", a - 1.26185);
 
     return 0;
 }
